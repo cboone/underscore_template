@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source :rubygems
 
-# Specify your gem's dependencies in rails_underscore_templates.gemspec
+# Gem dependencies are specified in rails_underscore_templates.gemspec
 gemspec
