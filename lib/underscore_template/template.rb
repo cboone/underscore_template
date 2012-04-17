@@ -19,21 +19,29 @@ module UnderscoreTemplate
     end
 
     def evaluate(scope, locals, &block)
-      <<-TMPL
-(function($) {
-  _.templates#{template_names(scope)} = _.template("#{escape_javascript data}");
-})();
-      TMPL
+      names = template_names(scope)
+      js = "(function(namespace) {\n"
+
+      (names.length - 1).times do |index|
+        name = nest_names names[0..index]
+        js << "\tnamespace#{name} = namespace#{name} || {};\n"
+      end
+
+      full_name = nest_names names
+      template = escape_javascript data
+
+      js << "\tnamespace#{full_name} = namespace#{full_name} || _.template(\"#{template}\", undefined, {variable: 'data'});\n"
+      js << "})(#{namespace});"
     end
 
     private
 
-    def template_names(scope)
-      nest_names(extract_names(scope.logical_path))
-    end
-
     def nest_names(names)
       "['#{names.join("']['")}']"
+    end
+
+    def template_names(scope)
+      extract_names scope.logical_path
     end
 
     def extract_names(path)
@@ -43,8 +51,12 @@ module UnderscoreTemplate
     end
 
     def match_names(path)
-      names = path.match(/\A templates \/ (.+) \. .+ \Z/xi)
-      (names && names.length > 0) ? names[1] : name
+      names = path.match /\A (.+) \. .+ \Z/xi
+      (names && names.length > 0) ? names[1] : path
+    end
+
+    def namespace
+      UnderscoreTemplate::Application.config.underscore_template.global || '_';
     end
   end
 
