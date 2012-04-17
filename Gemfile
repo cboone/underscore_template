@@ -1,4 +1,4 @@
 source :rubygems
 
-# Gem dependencies are specified in rails_underscore_templates.gemspec
+# Gem dependencies are specified in underscore_template.gemspec
 gemspec

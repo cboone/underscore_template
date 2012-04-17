@@ -1,4 +1,4 @@
-# RailsUnderscoreTemplates
+# UnderscoreTemplate
 
 TODO: Write a gem description
 
@@ -6,7 +6,7 @@ TODO: Write a gem description
 
 Add this line to your application's Gemfile:
 
-    gem 'rails_underscore_templates'
+    gem 'underscore_template'
 
 And then execute:
 
@@ -14,7 +14,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install rails_underscore_templates
+    $ gem install underscore_template
 
 ## Usage
 
