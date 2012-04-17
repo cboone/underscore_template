@@ -56,7 +56,7 @@ module UnderscoreTemplate
     end
 
     def namespace
-      UnderscoreTemplate::Application.config.underscore_template.global || '_';
+      ::Rails.application.config.assets.underscore_template.namespace
     end
   end
 
