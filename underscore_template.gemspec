@@ -16,4 +16,5 @@ Gem::Specification.new do |gem|
   gem.version       = UnderscoreTemplate::VERSION
 
   gem.add_dependency 'actionpack', '>= 3.1'
+  gem.add_dependency 'railties', '>= 3.1'
 end
