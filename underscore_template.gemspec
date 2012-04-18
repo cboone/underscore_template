@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ['info@hypsometry.com']
   gem.description   = %q{Underscore template support for Rails asset pipeline}
   gem.summary       = %q{Underscore templates for Rails}
-  gem.homepage      = 'http://github.com/cboone/underscore_template'
+  gem.homepage      = 'https://github.com/cboone/underscore_template'
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
@@ -17,4 +17,5 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'actionpack', '>= 3.1'
   gem.add_dependency 'railties', '>= 3.1'
+  gem.add_dependency 'sprockets', '>= 2.1'
 end

@@ -3,7 +3,9 @@ require 'active_support/ordered_options'
 
 module UnderscoreTemplate
   class Engine < ::Rails::Engine
-    config.underscore_template = ::ActiveSupport::OrderedOptions.new
+    config.before_configuration do |app|
+      app.config.underscore_template = ::ActiveSupport::OrderedOptions.new
+    end
 
     config.before_initialize do |app|
       if app.config.assets.enabled
