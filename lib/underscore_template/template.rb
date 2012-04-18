@@ -1,5 +1,3 @@
-require 'sprockets'
-require 'sprockets/engines'
 require 'tilt'
 require 'action_view'
 require 'action_view/helpers'
@@ -56,9 +54,7 @@ module UnderscoreTemplate
     end
 
     def namespace
-      ::Rails.application.config.assets.underscore_template.namespace
+      ::Rails.application.config.underscore_template.namespace || '_'
     end
   end
-
-  Sprockets.register_engine '._html', ::UnderscoreTemplate::Template
 end
