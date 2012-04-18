@@ -54,7 +54,7 @@ module UnderscoreTemplate
     end
 
     def namespace
-      ::Rails.application.config.underscore_template.namespace || '_'
+      ::Rails.application.config.assets.underscore_template.namespace || '_'
     end
   end
 end
