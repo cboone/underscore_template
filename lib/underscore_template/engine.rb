@@ -4,15 +4,12 @@ require 'active_support/ordered_options'
 module UnderscoreTemplate
   class Engine < ::Rails::Engine
     config.before_configuration do |app|
-      app.config.assets.underscore_template = ::ActiveSupport::OrderedOptions.new
+      app.config.assets.underscore_template = ActiveSupport::OrderedOptions.new
     end
 
     config.before_initialize do |app|
       if app.config.assets.enabled
-        require 'sprockets'
-        require 'sprockets/engines'
-
-        Sprockets.register_engine '._html', ::UnderscoreTemplate::Template
+        Sprockets.register_engine '._html', UnderscoreTemplate::Template
       end
     end
   end
