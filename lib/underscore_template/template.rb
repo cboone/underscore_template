@@ -29,7 +29,7 @@ module UnderscoreTemplate
       template = escape_javascript data
 
       js << "\tnamespace#{full_name} = namespace#{full_name} || _.template(\"#{template}\", undefined, {variable: 'data'});\n"
-      js << "})(#{namespace});"
+      js << "})(#{namespace});\n"
     end
 
     private
@@ -54,7 +54,8 @@ module UnderscoreTemplate
     end
 
     def namespace
-      ::Rails.application.config.assets.underscore_template.namespace || '_'
+      #::Rails.application.config.assets.underscore_template_namespace || '_'
+      '_'
     end
   end
 end
